@@ -23,18 +23,42 @@ public interface TeaDao
     @Query("DELETE FROM tea_table")
     void deleteAllTeas();
 
-    @Query("SELECT * FROM tea_table WHERE teaType IS 'black' ORDER BY teaName ASC")
+    @Query("SELECT * FROM tea_table")
+    LiveData<List<Tea>> getAllTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Black' ORDER BY teaType ASC")
     LiveData<List<Tea>> getAllBlackTeas();
 
-    @Query("SELECT * FROM tea_table WHERE teaType IS 'green' ORDER BY teaName ASC")
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Darjeeling' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllDarjeelingTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Fruit' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllFruitTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Green' ORDER BY teaType ASC")
     LiveData<List<Tea>> getAllGreenTeas();
 
-    @Query("SELECT * FROM tea_table WHERE teaType IS 'white' ORDER BY teaName ASC")
-    LiveData<List<Tea>> getAllWhiteTeas();
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Honeybush' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllHoneybushTeas();
 
-    @Query("SELECT * FROM tea_table WHERE teaType IS 'herbal' ORDER BY teaName ASC")
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Jasmine' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllJasmineTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Herbal' ORDER BY teaType ASC")
     LiveData<List<Tea>> getAllHerbalTeas();
 
-    @Query("SELECT * FROM tea_table WHERE teaType IS 'rooibos' ORDER BY teaName ASC")
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Oolong' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllOolongTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Pu-erh' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllPuerhTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Rooibos' ORDER BY teaType ASC")
     LiveData<List<Tea>> getAllRooibosTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'White' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllWhiteTeas();
+
+    @Query("SELECT * FROM tea_table WHERE teaType IS 'Yerba Mate' ORDER BY teaType ASC")
+    LiveData<List<Tea>> getAllYerbaMateTeas();
 }
