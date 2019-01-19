@@ -12,7 +12,7 @@ public class Tea
     private int id;
 
     @NonNull
-    private String teaType;
+    private String teaType; //{ Black, White, Green, Herbal, Rooibos, Oolong, Jasmine, Honeybush, Fruit, Yerba Mate, Pu-erh, Darjeeling }
 
     @NonNull
     private int brewTimeShort;
