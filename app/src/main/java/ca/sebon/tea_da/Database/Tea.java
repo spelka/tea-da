@@ -12,9 +12,6 @@ public class Tea
     private int id;
 
     @NonNull
-    private String teaName;
-
-    @NonNull
     private String teaType;
 
     @NonNull
@@ -27,46 +24,47 @@ public class Tea
     private int brewTimeLong;
 
     @NonNull
-    private String measureAmount;
+    private String teaAmount;
 
-    public Tea(String teaName, String teaType, int brewTimeShort, int brewTimeMedium, int brewTimeLong, String measureAmount) {
-        this.teaName = teaName;
+    public Tea(@NonNull String teaType, @NonNull int brewTimeShort, @NonNull int brewTimeMedium, @NonNull int brewTimeLong, @NonNull String teaAmount) {
         this.teaType = teaType;
         this.brewTimeShort = brewTimeShort;
         this.brewTimeMedium = brewTimeMedium;
         this.brewTimeLong = brewTimeLong;
-        this.measureAmount = measureAmount;
+        this.teaAmount = teaAmount;
     }
 
-    public void setId(int id) {
+    public void setId(@NonNull int id) {
         this.id = id;
     }
 
+    @NonNull
     public int getId() {
         return id;
     }
 
-    public String getTeaName() {
-        return teaName;
-    }
-
+    @NonNull
     public String getTeaType() {
         return teaType;
     }
 
+    @NonNull
     public int getBrewTimeShort() {
         return brewTimeShort;
     }
 
+    @NonNull
     public int getBrewTimeMedium() {
         return brewTimeMedium;
     }
 
+    @NonNull
     public int getBrewTimeLong() {
         return brewTimeLong;
     }
 
-    public String getMeasureAmount() {
-        return measureAmount;
+    @NonNull
+    public String getTeaAmount() {
+        return teaAmount;
     }
 }
