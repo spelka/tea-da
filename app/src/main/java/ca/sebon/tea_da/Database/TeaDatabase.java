@@ -15,6 +15,7 @@ public abstract class TeaDatabase extends RoomDatabase
 
     // Creates an instance of the TeaDatabase if one does not already exist.
     // Only one thread can access this at a time to prevent duplication.
+    // Additionally, Room will generate the necessary code for our abstract function in build().
     public static synchronized TeaDatabase getInstance(Context context)
     {
         if (instance == null)
