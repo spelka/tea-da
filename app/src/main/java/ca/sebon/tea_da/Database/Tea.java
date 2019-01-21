@@ -4,6 +4,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import ca.sebon.tea_da.R;
+
 @Entity(tableName = "tea_table")
 public class Tea
 {
@@ -26,12 +28,16 @@ public class Tea
     @NonNull
     private String teaAmount;
 
-    public Tea(@NonNull String teaType, @NonNull int brewTimeShort, @NonNull int brewTimeMedium, @NonNull int brewTimeLong, @NonNull String teaAmount) {
+    @NonNull
+    private int teaImage;
+
+    public Tea(@NonNull String teaType, @NonNull int brewTimeShort, @NonNull int brewTimeMedium, @NonNull int brewTimeLong, @NonNull String teaAmount, @NonNull int teaImage) {
         this.teaType = teaType;
         this.brewTimeShort = brewTimeShort;
         this.brewTimeMedium = brewTimeMedium;
         this.brewTimeLong = brewTimeLong;
         this.teaAmount = teaAmount;
+        this.teaImage = teaImage;
     }
 
     public void setId(@NonNull int id) {
@@ -68,23 +74,28 @@ public class Tea
         return teaAmount;
     }
 
+    @NonNull
+    public int getTeaImage() {
+        return teaImage;
+    }
+
     //Pre-populate DB with the entire list of Teas
     public static Tea[] populateDB()
     {
         return new Tea[]
                 {
-                        new Tea("Black", 180, 240, 300, "1 tsp"),
-                        new Tea("Darjeeling", 120, 180, 240, "1 tsp"),
-                        new Tea("Fruit", 300, 600, 900, "1-2 tsp"),
-                        new Tea("Green", 120, 180, 240, "1 tsp"),
-                        new Tea("Herbal", 300, 420, 600, "1 tsp"),
-                        new Tea("Honeybush", 300, 360, 420, "1 tsp"),
-                        new Tea("Jasmine", 120, 180, 240, "1 tsp"),
-                        new Tea("Oolong", 300, 360, 420, "1 tsp"),
-                        new Tea("Puerh", 300, 360, 420, "1 tbsp"),
-                        new Tea("Rooibos", 300, 420, 600, "1.5 tsp"),
-                        new Tea("White", 120, 180, 240, "1.5 tsp"),
-                        new Tea("Yerba Mate", 300, 360, 420, "1.5 tsp")
+                        new Tea("Black", 180, 240, 300, "1 tsp", R.drawable.black_tea),
+                        new Tea("Darjeeling", 120, 180, 240, "1 tsp", R.drawable.darjeeling_tea),
+                        new Tea("Fruit", 300, 600, 900, "1-2 tsp", R.drawable.fruit_tea),
+                        new Tea("Green", 120, 180, 240, "1 tsp", R.drawable.green_tea),
+                        new Tea("Herbal", 300, 420, 600, "1 tsp", R.drawable.herbal_tea),
+                        new Tea("Honeybush", 300, 360, 420, "1 tsp", R.drawable.honeybush_tea),
+                        new Tea("Jasmine", 120, 180, 240, "1 tsp", R.drawable.jasmine_tea),
+                        new Tea("Oolong", 300, 360, 420, "1 tsp", R.drawable.oolong_tea),
+                        new Tea("Puerh", 300, 360, 420, "1 tbsp", R.drawable.puerh_tea),
+                        new Tea("Rooibos", 300, 420, 600, "1.5 tsp", R.drawable.rooibos_tea),
+                        new Tea("White", 120, 180, 240, "1.5 tsp", R.drawable.white_tea),
+                        new Tea("Yerba Mate", 300, 360, 420, "1.5 tsp", R.drawable.yerbamate_tea)
                 };
     }
 }
