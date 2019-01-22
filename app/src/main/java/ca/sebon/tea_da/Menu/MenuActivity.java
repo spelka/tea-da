@@ -2,6 +2,7 @@ package ca.sebon.tea_da.Menu;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,10 +15,18 @@ import java.util.List;
 import ca.sebon.tea_da.Database.Tea;
 import ca.sebon.tea_da.Database.TeaViewModel;
 import ca.sebon.tea_da.R;
+import ca.sebon.tea_da.Timer.TimerActivity;
 
 public class MenuActivity extends AppCompatActivity
 {
+    //reference to the viewModel
     private TeaViewModel teaViewModel;
+
+    //reference to the adapter
+    private MenuAdapter mAdapter;
+
+    //reference to GUI elements
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,13 +34,26 @@ public class MenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        //Create a reference to our recyclerview
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_menu);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
+        //set up the recycler view
+        mRecyclerView = findViewById(R.id.recycler_view_menu);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setHasFixedSize(true);
 
-        final MenuAdapter adapter = new MenuAdapter();
-        recyclerView.setAdapter(adapter);
+        //set up the adapter
+        mAdapter = new MenuAdapter();
+        mAdapter.setOnItemClickListener(new MenuAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position)
+            {
+                Tea tea = mAdapter.getTeaList().get(position);
+                Toast.makeText(getApplicationContext(), tea.getTeaType(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //bind the adapter to the recyclerview
+        mRecyclerView.setAdapter(mAdapter);
 
         //We don't want use "new" here because we want to use an existing instance of the ViewModel.
         //The ViewModel reference is scoped to the lifecycle of this activity
@@ -43,7 +65,7 @@ public class MenuActivity extends AppCompatActivity
             public void onChanged(@Nullable List<Tea> teaList)
             {
                 //update our GUI element when a change to the DB occurs
-                adapter.setTeaList(teaList);
+                mAdapter.setTeaList(teaList);
             }
         });
     }

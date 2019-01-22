@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,20 +20,17 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.TeaHolder>
 {
     //initialize this here so we don't have a null object before our first LiveData update.
     private List<Tea> teaList = new ArrayList<>();
-
-    private Context mContext;
+    private OnItemClickListener mListener;
 
     @NonNull
     @Override
     public TeaHolder onCreateViewHolder(@NonNull ViewGroup parent, int i)
     {
-        //Capture the context of the parent
-        mContext = parent.getContext();
 
         //Create, inflate and return a TeaHolder list item.
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.menu_item, parent, false);
-        return new TeaHolder(itemView);
+        return new TeaHolder(itemView, mListener);
     }
 
     @Override
@@ -55,15 +53,52 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.TeaHolder>
         notifyDataSetChanged();
     }
 
+    public List<Tea> getTeaList()
+    {
+        return teaList;
+    }
+
+    //ViewHolder for each tea item in the RecyclerView
     class TeaHolder extends RecyclerView.ViewHolder
     {
         private TextView textViewTeaType;
         private CircleImageView circleImageViewTeaType;
 
-        public TeaHolder(@NonNull View itemView) {
+        public TeaHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             textViewTeaType = itemView.findViewById(R.id.text_view_menu_item);
             circleImageViewTeaType = itemView.findViewById(R.id.circle_image_view_menu_item);
+
+            //Set on-click function for each ViewHolder in the list
+            //On click, we want to call the onItemClick method on our mListener.
+            //We want to pass the click to our main activity, where interface OnItemClickListener is defined
+            itemView.setOnClickListener(new View.OnClickListener()
+            {
+
+                @Override
+                public void onClick(View v)
+                {
+                    if (listener != null)
+                    {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION)
+                        {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener
+    {
+        void onItemClick(int position);
+    }
+
+    //Called in the activity in order to set the listener.
+    public void setOnItemClickListener(OnItemClickListener listener)
+    {
+        mListener = listener;
     }
 }
