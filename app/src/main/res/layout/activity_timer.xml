@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/timer_text_view_tea_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TEA TYPE HERE"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circle_image_view_menu_item"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/black_tea"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
+        app:layout_constraintTop_toBottomOf="@id/timer_text_view_tea_name"/>
+
+    <RelativeLayout
+        android:id="@+id/timer_relative_layout_temperate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steeping Temperature: "/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/timer_linear_layout_steep_time"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/timer_button_steep_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LIGHT"/>
+
+        <Button
+            android:id="@+id/timer_button_steep_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEDIUM"/>
+
+        <Button
+            android:id="@+id/timer_button_steep_strong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STRONG"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <Chronometer
+            android:id="@+id/timer_chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"/>
+
+        <Button
+            android:id="@+id/timer_button_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
