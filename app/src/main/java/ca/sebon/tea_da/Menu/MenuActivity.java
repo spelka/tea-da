@@ -20,7 +20,7 @@ import ca.sebon.tea_da.Timer.TimerActivity;
 public class MenuActivity extends AppCompatActivity
 {
     //reference to the viewModel
-    private TeaViewModel teaViewModel;
+    private TeaViewModel mTeaViewModel;
 
     //reference to the adapter
     private MenuAdapter mAdapter;
@@ -45,9 +45,15 @@ public class MenuActivity extends AppCompatActivity
             @Override
             public void onItemClick(int position)
             {
-                Tea tea = mAdapter.getTeaList().get(position);
-                Toast.makeText(getApplicationContext(), tea.getTeaType(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
+                intent.putExtra("id", mAdapter.getTeaList().get(position).getId());
+                intent.putExtra("type", mAdapter.getTeaList().get(position).getTeaType());
+                intent.putExtra("image", mAdapter.getTeaList().get(position).getTeaImage());
+                intent.putExtra("amount", mAdapter.getTeaList().get(position).getTeaAmount());
+                intent.putExtra("steeptimeshort", mAdapter.getTeaList().get(position).getBrewTimeShort());
+                intent.putExtra("steeptimemedium", mAdapter.getTeaList().get(position).getBrewTimeMedium());
+                intent.putExtra("steeptimelong", mAdapter.getTeaList().get(position).getBrewTimeLong());
+
                 startActivity(intent);
             }
         });
@@ -58,8 +64,8 @@ public class MenuActivity extends AppCompatActivity
         //We don't want use "new" here because we want to use an existing instance of the ViewModel.
         //The ViewModel reference is scoped to the lifecycle of this activity
         //When this activity is finished, the viewmodel reference will be destroyed.
-        teaViewModel = ViewModelProviders.of(this).get(TeaViewModel.class);
-        teaViewModel.getAllTeas().observe(this, new Observer<List<Tea>>()
+        mTeaViewModel = ViewModelProviders.of(this).get(TeaViewModel.class);
+        mTeaViewModel.getAllTeas().observe(this, new Observer<List<Tea>>()
         {
             @Override
             public void onChanged(@Nullable List<Tea> teaList)

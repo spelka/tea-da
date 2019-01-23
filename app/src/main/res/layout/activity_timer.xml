@@ -4,42 +4,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:weightSum="100">
 
     <TextView
         android:id="@+id/timer_text_view_tea_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TEA TYPE HERE"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_weight="15"
         />
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/circle_image_view_menu_item"
+        android:id="@+id/timer_circle_image_view_tea_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/black_tea"
         app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"
-        app:layout_constraintTop_toBottomOf="@id/timer_text_view_tea_name"/>
+        app:layout_constraintTop_toBottomOf="@id/timer_text_view_tea_name"
+        android:layout_weight="30"/>
 
     <RelativeLayout
         android:id="@+id/timer_relative_layout_temperate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_weight="10">
 
         <TextView
+            android:id="@+id/timer_text_view_label_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="Steeping Temperature: "/>
+
+        <TextView
+            android:id="@+id/timer_text_view_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_toEndOf="@id/timer_text_view_label_temperature"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/timer_relative_layout_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_weight="10">
+
+        <TextView
+            android:id="@+id/timer_text_view_label_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Quantity: "/>
+
+        <TextView
+            android:id="@+id/timer_text_view_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_toEndOf="@id/timer_text_view_label_quantity"/>
+
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/timer_linear_layout_steep_time"
+        android:id="@+id/timer_linear_layout_time_selector"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_weight="10">
 
         <Button
             android:id="@+id/timer_button_steep_light"
@@ -61,22 +105,26 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/timer_linear_layout_timer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_weight="25">
 
         <Chronometer
             android:id="@+id/timer_chronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            android:layout_weight="15"/>
 
         <Button
             android:id="@+id/timer_button_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"/>
+            android:text="Start"
+            android:layout_weight="10"/>
 
     </LinearLayout>
 
