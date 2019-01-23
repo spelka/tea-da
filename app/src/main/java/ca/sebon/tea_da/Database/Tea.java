@@ -84,18 +84,18 @@ public class Tea
     {
         return new Tea[]
                 {
-                        new Tea("Black", 180, 240, 300, "1 tsp", R.drawable.black_tea),
-                        new Tea("Darjeeling", 120, 180, 240, "1 tsp", R.drawable.darjeeling_tea),
-                        new Tea("Fruit", 300, 600, 900, "1-2 tsp", R.drawable.fruit_tea),
-                        new Tea("Green", 120, 180, 240, "1 tsp", R.drawable.green_tea),
-                        new Tea("Herbal", 300, 420, 600, "1 tsp", R.drawable.herbal_tea),
-                        new Tea("Honeybush", 300, 360, 420, "1 tsp", R.drawable.honeybush_tea),
-                        new Tea("Jasmine", 120, 180, 240, "1 tsp", R.drawable.jasmine_tea),
-                        new Tea("Oolong", 300, 360, 420, "1 tsp", R.drawable.oolong_tea),
-                        new Tea("Puerh", 300, 360, 420, "1 tbsp", R.drawable.puerh_tea),
-                        new Tea("Rooibos", 300, 420, 600, "1.5 tsp", R.drawable.rooibos_tea),
-                        new Tea("White", 120, 180, 240, "1.5 tsp", R.drawable.white_tea),
-                        new Tea("Yerba Mate", 300, 360, 420, "1.5 tsp", R.drawable.yerbamate_tea)
+                        new Tea("Black", 180000, 240000, 300000, "1 tsp", R.drawable.black_tea),
+                        new Tea("Darjeeling", 120000, 180000, 240000, "1 tsp", R.drawable.darjeeling_tea),
+                        new Tea("Fruit", 300000, 600000, 900000, "1-2 tsp", R.drawable.fruit_tea),
+                        new Tea("Green", 120000, 180000, 240000, "1 tsp", R.drawable.green_tea),
+                        new Tea("Herbal", 300000, 420000, 600000, "1 tsp", R.drawable.herbal_tea),
+                        new Tea("Honeybush", 300000, 360000, 420000, "1 tsp", R.drawable.honeybush_tea),
+                        new Tea("Jasmine", 120000, 180000, 240000, "1 tsp", R.drawable.jasmine_tea),
+                        new Tea("Oolong", 300000, 360000, 420000, "1 tsp", R.drawable.oolong_tea),
+                        new Tea("Puerh", 300000, 360000, 420000, "1 tbsp", R.drawable.puerh_tea),
+                        new Tea("Rooibos", 300000, 420000, 600000, "1.5 tsp", R.drawable.rooibos_tea),
+                        new Tea("White", 120000, 180000, 240000, "1.5 tsp", R.drawable.white_tea),
+                        new Tea("Yerba Mate", 300000, 360000, 420000, "1.5 tsp", R.drawable.yerbamate_tea)
                 };
     }
 }
