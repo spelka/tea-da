@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import android.support.v4.app.NotificationCompat;
@@ -32,7 +33,7 @@ public class TimerActivity extends AppCompatActivity
 
     //reference to the timer object
     private CountDownTimer mCountDownTimer;
-    private long mRemainingTimeMilliseconds = 600000;
+    private long mRemainingTimeMilliseconds= 0;
     private boolean mTimerRunning;
     int mCountDownIntervalMilliSeconds = 1000;
 
@@ -46,6 +47,9 @@ public class TimerActivity extends AppCompatActivity
     private Button mButtonSteepStrong;
     private TextView mTextViewCountDown;
     private Button mButtonStartStop;
+
+    private LinearLayout mLinearLayoutConfiguration;
+    private LinearLayout mLinearLayoutInformation;
 
     //Notifications
     private NotificationManagerCompat notificationManagerCompat;
@@ -142,6 +146,12 @@ public class TimerActivity extends AppCompatActivity
             }
         });
 
+        mLinearLayoutConfiguration = findViewById(R.id.timer_linear_layout_panel_configuration);
+        mLinearLayoutConfiguration.setVisibility(View.VISIBLE);
+
+        mLinearLayoutInformation = findViewById(R.id.timer_linear_layout_panel_information);
+        mLinearLayoutInformation.setVisibility(View.GONE);
+
     }
 
     public void toggleTimer()
@@ -158,31 +168,47 @@ public class TimerActivity extends AppCompatActivity
 
     public void startTimer()
     {
-        mCountDownTimer = new CountDownTimer(mRemainingTimeMilliseconds, mCountDownIntervalMilliSeconds) {
+        if (mRemainingTimeMilliseconds > 0)
+        {
+            mCountDownTimer = new CountDownTimer(mRemainingTimeMilliseconds, mCountDownIntervalMilliSeconds) {
 
-            @Override
-            public void onTick(long millisUntilFinished)
-            {
-                mRemainingTimeMilliseconds = millisUntilFinished;
-                updateTimer();
-            }
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    mRemainingTimeMilliseconds = millisUntilFinished;
+                    updateTimer();
+                }
 
-            @Override
-            public void onFinish()
-            {
-                sendNotification();
-            }
-        }.start();
+                @Override
+                public void onFinish() {
+                    sendNotification();
+                    //TODO: Make the Start/Stop button turn into a "home" button after the timer reaches zero
+                }
+            }.start();
 
-        mButtonStartStop.setText("Stop");
-        mTimerRunning = true;
+            mButtonStartStop.setText("Stop");
+            setInfoDisplay();
+            mTimerRunning = true;
+        }
     }
 
     public void stopTimer()
     {
         mCountDownTimer.cancel();
         mButtonStartStop.setText("Start");
+        setConfigDisplay();
         mTimerRunning = false;
+    }
+
+    public void setConfigDisplay()
+    {
+        mLinearLayoutConfiguration.setVisibility(View.VISIBLE);
+        mLinearLayoutInformation.setVisibility(View.GONE);
+    }
+
+    public void setInfoDisplay()
+    {
+        mLinearLayoutConfiguration.setVisibility(View.GONE);
+        mLinearLayoutInformation.setVisibility(View.VISIBLE);
     }
 
     public void updateTimer()

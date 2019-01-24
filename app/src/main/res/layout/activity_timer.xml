@@ -7,103 +7,139 @@
     android:gravity="center_horizontal"
     android:weightSum="100">
 
-    <TextView
-        android:id="@+id/timer_text_view_tea_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_weight="15"
-        />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/timer_circle_image_view_tea_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/black_tea"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"
-        app:layout_constraintTop_toBottomOf="@id/timer_text_view_tea_name"
-        android:layout_weight="30"/>
-
-    <RelativeLayout
-        android:id="@+id/timer_relative_layout_temperate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_weight="10">
-
-        <TextView
-            android:id="@+id/timer_text_view_label_temperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="Steeping Temperature: "/>
-
-        <TextView
-            android:id="@+id/timer_text_view_temperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_toEndOf="@id/timer_text_view_label_temperature"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/timer_relative_layout_quantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_weight="10">
-
-        <TextView
-            android:id="@+id/timer_text_view_label_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="Quantity: "/>
-
-        <TextView
-            android:id="@+id/timer_text_view_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_toEndOf="@id/timer_text_view_label_quantity"/>
-
-    </RelativeLayout>
-
+    <!-- Top level element contains title and image -->
     <LinearLayout
-        android:id="@+id/timer_linear_layout_time_selector"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_weight="10">
-
-        <Button
-            android:id="@+id/timer_button_steep_light"
-            android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="45">
+        <TextView
+            android:id="@+id/timer_text_view_tea_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIGHT"/>
-
-        <Button
-            android:id="@+id/timer_button_steep_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MEDIUM"/>
-
-        <Button
-            android:id="@+id/timer_button_steep_strong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="STRONG"/>
-
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_weight="15"
+            />
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/timer_circle_image_view_tea_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+            app:layout_constraintTop_toBottomOf="@id/timer_text_view_tea_name"
+            android:layout_weight="30"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
+
+
+    <!-- Configuration Element contains Steeping information and buttons -->
+    <!-- These elements should disappear when steeping is in progress -->
+    <LinearLayout
+        android:id="@+id/timer_linear_layout_panel_configuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="30">
+
+        <RelativeLayout
+            android:id="@+id/timer_relative_layout_temperate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="10">
+            <TextView
+                android:id="@+id/timer_text_view_label_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="Steeping Temperature: "/>
+            <TextView
+                android:id="@+id/timer_text_view_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_toEndOf="@id/timer_text_view_label_temperature"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/timer_relative_layout_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="10">
+            <TextView
+                android:id="@+id/timer_text_view_label_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="Quantity: "/>
+            <TextView
+                android:id="@+id/timer_text_view_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_toEndOf="@id/timer_text_view_label_quantity"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/timer_linear_layout_time_selector"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_weight="10">
+            <Button
+                android:id="@+id/timer_button_steep_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIGHT"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/timer_button_steep_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MEDIUM"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/timer_button_steep_strong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STRONG"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- This panel will contain tea facts (once implemented) -->
+    <LinearLayout
+        android:id="@+id/timer_linear_layout_panel_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="30">
+        <TextView
+            android:id="@+id/timer_text_view_info_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Your tea is brewing!"/>
+    </LinearLayout>
+
+
+
+
+    <!-- Timer Element contains the countdown timer as well as the Start/Stop button -->
     <LinearLayout
         android:id="@+id/timer_linear_layout_timer"
         android:layout_width="match_parent"
@@ -121,7 +157,7 @@
 
         <Button
             android:id="@+id/timer_button_start"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start"
             android:layout_weight="10"/>
