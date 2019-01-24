@@ -196,6 +196,8 @@ public class TimerActivity extends AppCompatActivity
         mCountDownTimer.cancel();
         mButtonStartStop.setText("Start");
         setConfigDisplay();
+        mRemainingTimeMilliseconds = 0;
+        updateTimer();
         mTimerRunning = false;
     }
 
