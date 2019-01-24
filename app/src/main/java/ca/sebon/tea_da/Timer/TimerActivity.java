@@ -1,22 +1,27 @@
 package ca.sebon.tea_da.Timer;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.SystemClock;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Timer;
+import android.support.v4.app.NotificationCompat;
+
 
 import ca.sebon.tea_da.Database.Tea;
 import ca.sebon.tea_da.R;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static ca.sebon.tea_da.BaseApplication.NOTIFICATION_CHANNEL_ID;
 
 public class TimerActivity extends AppCompatActivity
 {
@@ -42,6 +47,9 @@ public class TimerActivity extends AppCompatActivity
     private TextView mTextViewCountDown;
     private Button mButtonStartStop;
 
+    //Notifications
+    private NotificationManagerCompat notificationManagerCompat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -63,6 +71,9 @@ public class TimerActivity extends AppCompatActivity
 
         //Customize the View for the activity
         buildTimerActivity();
+
+        //Set up the notification manager
+        notificationManagerCompat = NotificationManagerCompat.from(this);
 
         Log.d(TAG, "onCreate: finished");
     }
@@ -157,8 +168,9 @@ public class TimerActivity extends AppCompatActivity
             }
 
             @Override
-            public void onFinish() {
-
+            public void onFinish()
+            {
+                sendNotification();
             }
         }.start();
 
@@ -173,7 +185,6 @@ public class TimerActivity extends AppCompatActivity
         mTimerRunning = false;
     }
 
-
     public void updateTimer()
     {
         int remainingMinutes = (int) mRemainingTimeMilliseconds / 60000;
@@ -186,5 +197,17 @@ public class TimerActivity extends AppCompatActivity
         timeLeftText += remainingSeconds;
 
         mTextViewCountDown.setText(timeLeftText);
+    }
+
+    public void sendNotification()
+    {
+        Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
+                .setContentTitle("Tea-Da!")
+                .setContentText("Your tea is steeped! Enjoy!")
+                .setPriority(NotificationManagerCompat.IMPORTANCE_DEFAULT)
+                .build();
+
+        notificationManagerCompat.notify(1, notification);
     }
 }
