@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -50,9 +49,10 @@ public class MenuActivity extends AppCompatActivity
                 intent.putExtra("type", mAdapter.getTeaList().get(position).getTeaType());
                 intent.putExtra("image", mAdapter.getTeaList().get(position).getTeaImage());
                 intent.putExtra("amount", mAdapter.getTeaList().get(position).getTeaAmount());
-                intent.putExtra("steeptimeshort", mAdapter.getTeaList().get(position).getBrewTimeShort());
-                intent.putExtra("steeptimemedium", mAdapter.getTeaList().get(position).getBrewTimeMedium());
-                intent.putExtra("steeptimelong", mAdapter.getTeaList().get(position).getBrewTimeLong());
+                intent.putExtra("steeptimeshort", mAdapter.getTeaList().get(position).getSteepTimeShort());
+                intent.putExtra("steeptimemedium", mAdapter.getTeaList().get(position).getSteepTimeMedium());
+                intent.putExtra("steeptimelong", mAdapter.getTeaList().get(position).getSteepTimeLong());
+                intent.putExtra("temperature", mAdapter.getTeaList().get(position).getSteepTemperature());
 
                 startActivity(intent);
             }

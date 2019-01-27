@@ -69,6 +69,7 @@ public class TimerActivity extends AppCompatActivity
                         intent.getIntExtra("steeptimemedium", 0),
                         intent.getIntExtra("steeptimelong", 0),
                         intent.getStringExtra("amount"),
+                        intent.getStringExtra("temperature"),
                         intent.getIntExtra("image", 0)
                 );
 
@@ -91,7 +92,7 @@ public class TimerActivity extends AppCompatActivity
         mCircleImageViewTeaImage.setImageResource(mCurrentTea.getTeaImage());
 
         mTextViewTemperature = findViewById(R.id.timer_text_view_temperature);
-        mTextViewTemperature.setText(mCurrentTea.getTeaAmount());
+        mTextViewTemperature.setText(mCurrentTea.getSteepTemperature());
 
         mTextViewQuantity = findViewById(R.id.timer_text_view_quantity);
         mTextViewQuantity.setText(mCurrentTea.getTeaAmount());
@@ -106,7 +107,7 @@ public class TimerActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mRemainingTimeMilliseconds = mCurrentTea.getBrewTimeShort();
+                mRemainingTimeMilliseconds = mCurrentTea.getSteepTimeShort();
                 updateTimer();
             }
         });
@@ -118,7 +119,7 @@ public class TimerActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mRemainingTimeMilliseconds = mCurrentTea.getBrewTimeMedium();
+                mRemainingTimeMilliseconds = mCurrentTea.getSteepTimeMedium();
                 updateTimer();
             }
         });
@@ -130,7 +131,7 @@ public class TimerActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                mRemainingTimeMilliseconds = mCurrentTea.getBrewTimeLong();
+                mRemainingTimeMilliseconds = mCurrentTea.getSteepTimeLong();
                 updateTimer();
             }
         });
