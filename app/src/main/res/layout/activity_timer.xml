@@ -14,12 +14,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="45">
+        android:layout_weight="45"
+        android:layout_margin="10dp">
         <TextView
             android:id="@+id/timer_text_view_tea_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:layout_weight="15"
             />
@@ -29,7 +30,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@mipmap/ic_launcher"
-            app:civ_border_width="2dp"
+            app:civ_border_width="0dp"
             app:civ_border_color="#FF000000"
             app:layout_constraintTop_toBottomOf="@id/timer_text_view_tea_name"
             android:layout_weight="30"
@@ -45,7 +46,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="30">
+        android:layout_weight="30"
+        android:layout_margin="10dp">
 
         <RelativeLayout
             android:id="@+id/timer_relative_layout_temperate"
@@ -97,28 +99,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_weight="10">
+            android:layout_weight="10"
+            android:padding="10dp">
             <Button
                 android:id="@+id/timer_button_steep_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LIGHT"
                 android:layout_weight="1"
-                android:background="@drawable/button_default"/>
+                android:background="@drawable/button_default"
+                android:layout_margin="3dp"/>
             <Button
                 android:id="@+id/timer_button_steep_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MEDIUM"
                 android:layout_weight="1"
-                android:background="@drawable/button_default"/>
+                android:background="@drawable/button_default"
+                android:layout_margin="3dp"/>
             <Button
                 android:id="@+id/timer_button_steep_strong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="STRONG"
                 android:layout_weight="1"
-                android:background="@drawable/button_default"/>
+                android:background="@drawable/button_default"
+                android:layout_margin="3dp"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -129,14 +135,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="30">
+        android:layout_weight="30"
+        android:layout_margin="10dp">
         <TextView
             android:id="@+id/timer_text_view_info_message"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="Your tea is brewing!"/>
+            android:text="Your tea is steeping!"/>
     </LinearLayout>
 
 
@@ -149,6 +156,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:layout_margin="10dp"
         android:layout_weight="25">
 
         <TextView
@@ -156,6 +164,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
+            android:layout_gravity="center"
             android:layout_weight="15"/>
 
         <Button
