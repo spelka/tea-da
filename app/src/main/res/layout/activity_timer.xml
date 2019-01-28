@@ -16,14 +16,17 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="45"
         android:layout_margin="10dp">
+
         <TextView
             android:id="@+id/timer_text_view_tea_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:fontFamily="@font/atma_medium"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_weight="15"
-            />
+            android:textSize="36sp"
+            android:textStyle="bold" />
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/timer_circle_image_view_tea_image"
@@ -55,20 +58,24 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_weight="10">
+
             <TextView
                 android:id="@+id/timer_text_view_label_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/atma"
                 android:gravity="center_horizontal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="Steeping Temperature: "/>
+                android:text="Steeping Temperature: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
             <TextView
                 android:id="@+id/timer_text_view_temperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/timer_text_view_label_temperature"
+                android:fontFamily="@font/atma"
                 android:gravity="center_horizontal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_toEndOf="@id/timer_text_view_label_temperature"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -77,20 +84,24 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_weight="10">
+
             <TextView
                 android:id="@+id/timer_text_view_label_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/atma"
                 android:gravity="center_horizontal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:text="Quantity: "/>
+                android:text="Quantity: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
             <TextView
                 android:id="@+id/timer_text_view_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/timer_text_view_label_quantity"
+                android:fontFamily="@font/atma"
                 android:gravity="center_horizontal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_toEndOf="@id/timer_text_view_label_quantity"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </RelativeLayout>
 
         <LinearLayout
@@ -101,30 +112,37 @@
             android:gravity="center_horizontal"
             android:layout_weight="10"
             android:padding="10dp">
+
             <Button
                 android:id="@+id/timer_button_steep_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LIGHT"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_default"
-                android:layout_margin="3dp"/>
+                android:fontFamily="@font/atma_medium"
+                android:text="LIGHT"
+                android:textSize="14sp" />
+
             <Button
                 android:id="@+id/timer_button_steep_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MEDIUM"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_default"
-                android:layout_margin="3dp"/>
+                android:fontFamily="@font/atma_medium"
+                android:text="MEDIUM" />
+
             <Button
                 android:id="@+id/timer_button_steep_strong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="STRONG"
+                android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:background="@drawable/button_default"
-                android:layout_margin="3dp"/>
+                android:fontFamily="@font/atma_medium"
+                android:text="STRONG" />
         </LinearLayout>
     </LinearLayout>
 
@@ -137,13 +155,15 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="30"
         android:layout_margin="10dp">
+
         <TextView
             android:id="@+id/timer_text_view_info_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/atma"
             android:gravity="center_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:text="Your tea is steeping!"/>
+            android:text="Your tea is steeping!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
     </LinearLayout>
 
 
@@ -163,17 +183,22 @@
             android:id="@+id/timer_text_view_countdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
             android:layout_gravity="center"
-            android:layout_weight="15"/>
+            android:layout_weight="15"
+            android:fontFamily="@font/atma_medium"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/timer_button_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start"
             android:layout_weight="10"
-            android:background="@drawable/button_default"/>
+            android:background="@drawable/button_default"
+            android:fontFamily="@font/atma_medium"
+            android:text="Start"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

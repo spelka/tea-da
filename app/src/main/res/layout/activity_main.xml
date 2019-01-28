@@ -22,6 +22,7 @@
         android:layout_margin="5dp"
         android:layout_weight="10"
         android:background="@drawable/button_default"
+        android:fontFamily="@font/atma_medium"
         android:onClick="loadMenuActivity"
         android:text="Choose a Tea"
         android:textSize="18sp"
