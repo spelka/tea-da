@@ -13,17 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main.MainActivity">
+        <activity android:name=".Main.MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu.MenuActivity">
+        <activity android:name=".Menu.MenuActivity" android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".Timer.TimerActivity" />
+        <activity android:name=".Timer.TimerActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>
