@@ -9,6 +9,7 @@
 
 
     <ImageView
+        android:id="@+id/main_image_view"
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:gravity="center"
