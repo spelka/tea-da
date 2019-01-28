@@ -19,10 +19,13 @@ import android.support.v4.app.NotificationCompat;
 
 
 import ca.sebon.tea_da.Database.Tea;
+import ca.sebon.tea_da.Main.MainActivity;
+import ca.sebon.tea_da.Menu.MenuActivity;
 import ca.sebon.tea_da.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static ca.sebon.tea_da.BaseApplication.NOTIFICATION_CHANNEL_ID;
+import ca.sebon.tea_da.Menu.MenuActivity;
 
 public class TimerActivity extends AppCompatActivity
 {
@@ -47,6 +50,7 @@ public class TimerActivity extends AppCompatActivity
     private Button mButtonSteepStrong;
     private TextView mTextViewCountDown;
     private Button mButtonStartStop;
+    private TextView mTextViewInfoMessage;
 
     private LinearLayout mLinearLayoutConfiguration;
     private LinearLayout mLinearLayoutInformation;
@@ -153,6 +157,8 @@ public class TimerActivity extends AppCompatActivity
         mLinearLayoutInformation = findViewById(R.id.timer_linear_layout_panel_information);
         mLinearLayoutInformation.setVisibility(View.GONE);
 
+        mTextViewInfoMessage = findViewById(R.id.timer_text_view_info_message);
+
     }
 
     public void toggleTimer()
@@ -182,7 +188,17 @@ public class TimerActivity extends AppCompatActivity
                 @Override
                 public void onFinish() {
                     sendNotification();
-                    //TODO: Make the Start/Stop button turn into a "home" button after the timer reaches zero
+                    mTextViewInfoMessage.setText("Tea-Da! Your tea is ready! Enjoy!");
+                    mButtonStartStop.setText("Steep Another Tea");
+                    mButtonStartStop.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v)
+                        {
+                            //load the countdown activity
+                            Intent intent = new Intent (getBaseContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }.start();
 
@@ -233,7 +249,7 @@ public class TimerActivity extends AppCompatActivity
         Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
                 .setContentTitle("Tea-Da!")
-                .setContentText("Your tea is steeped! Enjoy!")
+                .setContentText("Your tea is ready! Enjoy!")
                 .setPriority(NotificationManagerCompat.IMPORTANCE_DEFAULT)
                 .build();
 
