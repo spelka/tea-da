@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.sebon.tea_da">
 
-    <!-- internet permission to grab images from the internet -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
