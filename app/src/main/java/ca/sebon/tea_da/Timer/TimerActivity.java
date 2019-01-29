@@ -1,15 +1,11 @@
 package ca.sebon.tea_da.Timer;
 
 import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -20,16 +16,13 @@ import android.support.v4.app.NotificationCompat;
 
 import ca.sebon.tea_da.Database.Tea;
 import ca.sebon.tea_da.Main.MainActivity;
-import ca.sebon.tea_da.Menu.MenuActivity;
 import ca.sebon.tea_da.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static ca.sebon.tea_da.BaseApplication.NOTIFICATION_CHANNEL_ID;
-import ca.sebon.tea_da.Menu.MenuActivity;
 
 public class TimerActivity extends AppCompatActivity
 {
-    private static final String TAG = "TimerActivity";
 
     //reference to the current tea object
     private Tea mCurrentTea;
@@ -61,7 +54,6 @@ public class TimerActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        Log.d(TAG, "onCreate: started");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
@@ -83,8 +75,6 @@ public class TimerActivity extends AppCompatActivity
 
         //Set up the notification manager
         notificationManagerCompat = NotificationManagerCompat.from(this);
-
-        Log.d(TAG, "onCreate: finished");
     }
 
     public void buildTimerActivity()
