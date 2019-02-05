@@ -25,7 +25,7 @@ public class BaseApplication extends Application
             NotificationChannel notificationChannel = new NotificationChannel(
                     NOTIFICATION_CHANNEL_ID,
                     "Tea-Da Notifications",
-                    NotificationManager.IMPORTANCE_DEFAULT
+                    NotificationManager.IMPORTANCE_HIGH
             );
             notificationChannel.setDescription("Tea-Da! Your tea is ready!");
 

@@ -1,6 +1,9 @@
 package ca.sebon.tea_da.Timer;
 
+import android.app.AlarmManager;
 import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,7 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
+
+import java.util.Date;
+import java.util.Timer;
 
 import ca.sebon.tea_da.Database.Tea;
 import ca.sebon.tea_da.Main.MainActivity;
@@ -32,6 +39,10 @@ public class TimerActivity extends AppCompatActivity
     private long mRemainingTimeMilliseconds= 0;
     private boolean mTimerRunning;
     int mCountDownIntervalMilliSeconds = 1000;
+
+    Date mTimerPausedTime;
+    Date mTimerResumedTime;
+    long mDeltaTime;
 
     //GUI Elements
     private TextView mTextViewTeaName;
@@ -75,6 +86,20 @@ public class TimerActivity extends AppCompatActivity
 
         //Set up the notification manager
         notificationManagerCompat = NotificationManagerCompat.from(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mTimerPausedTime = new Date();
+        startAlarm();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTimerResumedTime = new Date();
+        stopAlarm();
     }
 
     public void buildTimerActivity()
@@ -179,6 +204,8 @@ public class TimerActivity extends AppCompatActivity
                 public void onFinish() {
                     sendNotification();
                     mTextViewInfoMessage.setText("Tea-Da! Your tea is ready! Enjoy!");
+                    mRemainingTimeMilliseconds = 0;
+                    updateTimer();
                     mButtonStartStop.setText("Steep Another Tea");
                     mButtonStartStop.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -240,9 +267,30 @@ public class TimerActivity extends AppCompatActivity
                 .setSmallIcon(R.drawable.ic_notifications_active_black_24dp)
                 .setContentTitle("Tea-Da!")
                 .setContentText("Your tea is ready! Enjoy!")
-                .setPriority(NotificationManagerCompat.IMPORTANCE_DEFAULT)
+                .setPriority(NotificationManagerCompat.IMPORTANCE_HIGH)
                 .build();
 
         notificationManagerCompat.notify(1, notification);
     }
+
+    //Invoke AlarmManager when the phone is locked and in doze-standby mode
+    //https://developer.android.com/training/monitoring-device-state/doze-standby
+    private void startAlarm()
+    {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, mRemainingTimeMilliseconds, pendingIntent);
+    }
+
+    private void stopAlarm()
+    {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        alarmManager.cancel(pendingIntent);
+    }
+
 }
