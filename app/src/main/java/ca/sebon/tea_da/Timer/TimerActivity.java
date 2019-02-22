@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -17,6 +18,10 @@ import android.widget.TextView;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.Date;
 import java.util.Timer;
@@ -86,6 +91,21 @@ public class TimerActivity extends AppCompatActivity
 
         //Set up the notification manager
         notificationManagerCompat = NotificationManagerCompat.from(this);
+
+
+        //Initialize the Mobile Ads SDK
+        MobileAds.initialize(this, "ca-app-pub-1462446494198204~3542134273");
+
+        //Set up the Ad
+        AdView adView = (AdView) findViewById(R.id.ad_view_main_banner);
+
+        // Create an ad request. Check logcat output for the hashed device ID to
+        // get test ads on a physical device.
+        AdRequest adRequest = new AdRequest.Builder()
+                //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
+        adView.loadAd(adRequest);
     }
 
     @Override
