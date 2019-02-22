@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Initialize the Mobile Ads SDK
-        //MobileAds.initialize(this, "ca-app-pub-1462446494198204~3542134273");
+        MobileAds.initialize(this, "ca-app-pub-1462446494198204~3542134273");
 
         ImageView imageView = findViewById(R.id.main_image_view);
         Picasso.with(this)
