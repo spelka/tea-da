@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +39,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.TeaHolder>
         //For each item in the list, put the data from java objects into our TeaHolder list item
         Tea currentTea = teaList.get(position);
         teaHolder.textViewTeaType.setText(currentTea.getTeaType());
-        teaHolder.circleImageViewTeaType.setImageResource(currentTea.getTeaImage());
+        Picasso.with(teaHolder.circleImageViewTeaType.getContext())
+                .load(currentTea.getTeaImage())
+                .fit()
+                .into(teaHolder.circleImageViewTeaType);
     }
 
     @Override

@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 import java.util.Timer;
@@ -128,7 +129,10 @@ public class TimerActivity extends AppCompatActivity
         mTextViewTeaName.setText(mCurrentTea.getTeaType());
 
         mCircleImageViewTeaImage = findViewById(R.id.timer_circle_image_view_tea_image);
-        mCircleImageViewTeaImage.setImageResource(mCurrentTea.getTeaImage());
+        Picasso.with(this)
+                .load(mCurrentTea.getTeaImage())
+                .fit()
+                .into(mCircleImageViewTeaImage);
 
         mTextViewTemperature = findViewById(R.id.timer_text_view_temperature);
         mTextViewTemperature.setText(mCurrentTea.getSteepTemperature());
