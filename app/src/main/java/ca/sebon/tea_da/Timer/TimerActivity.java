@@ -5,11 +5,13 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -133,6 +135,21 @@ public class TimerActivity extends AppCompatActivity
                 .load(mCurrentTea.getTeaImage())
                 .fit()
                 .into(mCircleImageViewTeaImage);
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        //dynamically resize for smaller devices to prevent clipping of UI elements
+        if ( size.x <= 720 ) {
+            mCircleImageViewTeaImage.getLayoutParams().width = size.x / 3;
+            mCircleImageViewTeaImage.getLayoutParams().height = size.x / 3;
+        }
+        else
+        {
+            mCircleImageViewTeaImage.getLayoutParams().width = size.x / 2;
+            mCircleImageViewTeaImage.getLayoutParams().height = size.x / 2;
+        }
 
         mTextViewTemperature = findViewById(R.id.timer_text_view_temperature);
         mTextViewTemperature.setText(mCurrentTea.getSteepTemperature());
